@@ -1,0 +1,13 @@
+type: hyperskill
+title: University Admission Procedure
+language: English
+summary: It takes a lot of hard work to enroll in the university of your dreams. Although,
+  we tend to dismiss how difficult it is for the university to handle the document
+  volume. In this project, you'll deal with university applicants. You'll implement
+  an algorithm to determine which applicants are going to be enrolled. At each stage,
+  the algorithm will gradually become more complex and comprehensive!<br/><br/>Learn
+  more at <a href="https://hyperskill.org">https://hyperskill.org/projects/163</a>
+programming_language: Python
+content:
+- University Admission Procedure
+mode: Study
