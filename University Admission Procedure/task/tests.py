@@ -4,6 +4,11 @@ input_1 = ["70", "90", "60"]
 input_2 = ["50", "53", "78"]
 input_3 = ["100", "84", "10"]
 input_4 = ["50", "50", "50"]
+input_5 = ["12", "6", "3"]
+input_6 = ["70", "60", "50"]
+threshold = 60.0
+positive_keywords = ["congratulation", "accepted"]
+negative_keywords = ["regret", "not", "offer you admission"]
 
 
 class TestAdmissionProcedure(StageTest):
@@ -12,13 +17,33 @@ class TestAdmissionProcedure(StageTest):
             TestCase(stdin=input_1, attach=input_1),
             TestCase(stdin=input_2, attach=input_2),
             TestCase(stdin=input_3, attach=input_3),
-            TestCase(stdin=input_4, attach=input_4)
+            TestCase(stdin=input_4, attach=input_4),
+            TestCase(stdin=input_5, attach=input_5),
+            TestCase(stdin=input_6, attach=input_6),
         ]
 
     @staticmethod
     def get_mean(*numbers):
         numbers = [int(number) for number in numbers]
         return sum(numbers) / len(numbers)
+
+    @staticmethod
+    def check_keywords(correct_words, wrong_words, reply_line):
+        correct_words = [word in reply_line for word in correct_words]
+        wrong_words = [word in reply_line for word in wrong_words]
+        return len(correct_words) == sum(correct_words) and not sum(wrong_words)
+
+    @staticmethod
+    def check_result(correct_mean, reply_line):
+        if correct_mean >= threshold:
+            is_correct_output = TestAdmissionProcedure.check_keywords(positive_keywords, negative_keywords, reply_line)
+        else:
+            is_correct_output = TestAdmissionProcedure.check_keywords(negative_keywords, positive_keywords, reply_line)
+
+        if not is_correct_output:
+            raise WrongAnswer("The second line of your output seem to contain a wrong message.\n"
+                              "Make sure that you use the correct threshold \n"
+                              "and output the message exactly as stated in the description.")
 
     def check(self, reply: str, attach: list):
         output = reply.lower().strip().split('\n')
@@ -36,10 +61,7 @@ class TestAdmissionProcedure(StageTest):
             raise WrongAnswer("The mean score in your output is {0}.\n"
                               "However, the answer {1} was expected.".format(output_mean, correct_mean))
 
-        if "congratulations" not in output[1] or "you are accepted" not in output[1]:
-            raise WrongAnswer("The second line of your output does not seem to contain the line \n"
-                              "\"Congratulations, you are accepted!\"")
-
+        self.check_result(correct_mean, output[1])
         return CheckResult.correct()
 
 
