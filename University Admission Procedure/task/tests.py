@@ -1,14 +1,15 @@
 from hstest import *
 
-input_1 = ["70", "90", "60"]
-input_2 = ["50", "53", "78"]
-input_3 = ["100", "84", "10"]
-input_4 = ["50", "50", "50"]
-input_5 = ["12", "6", "3"]
-input_6 = ["70", "60", "50"]
-threshold = 60.0
-positive_keywords = ["congratulation", "accepted"]
-negative_keywords = ["regret", "not", "offer you admission"]
+input_1 = ["5", "3", "Cole Collins 3.68", "Dolores Baldwin 3.40", "Brett Boyer 2.45",
+           "Nora Alston 3.71", "Jessy Moore 3.14"]
+input_2 = ["3", "2",
+           "Albert Collins 3.02", "Albert Nelson 3.02", "Cole Allen 3.02"]
+input_3 = ["10", "5",
+           "Chuck Norris 3.55", "Artavious Fay 3.05", "Sameera Procter-Baines 3.18",
+           "Blia Sagar 3.44", "Divina Butterworth 3.27", "Marygrace Wheelton 3.58",
+           "Dashanna Herron 3.12", "Derick Whatley 3.61", "Jamarl Delap 3.11",
+           "Kaylie Lanthis 3.22"]
+input_4 = ["2", "1", "Tisheena Mckenney 3.18", "Jeff Bezos 3.99"]
 
 
 class TestAdmissionProcedure(StageTest):
@@ -17,51 +18,42 @@ class TestAdmissionProcedure(StageTest):
             TestCase(stdin=input_1, attach=input_1),
             TestCase(stdin=input_2, attach=input_2),
             TestCase(stdin=input_3, attach=input_3),
-            TestCase(stdin=input_4, attach=input_4),
-            TestCase(stdin=input_5, attach=input_5),
-            TestCase(stdin=input_6, attach=input_6),
+            TestCase(stdin=input_4, attach=input_4)
         ]
 
     @staticmethod
-    def get_mean(*numbers):
-        numbers = [int(number) for number in numbers]
-        return sum(numbers) / len(numbers)
+    def get_successful_applicants(applicants_list, m):
+        applicants = []
+        for applicant in applicants_list:
+            name, surname, gpa = applicant.split(' ')
+            name = ' '.join([name, surname])
+            gpa = float(gpa)
+            applicants.append([name, gpa])
 
-    @staticmethod
-    def check_keywords(correct_words, wrong_words, reply_line):
-        correct_words = [word in reply_line for word in correct_words]
-        wrong_words = [word in reply_line for word in wrong_words]
-        return len(correct_words) == sum(correct_words) and not sum(wrong_words)
-
-    @staticmethod
-    def check_result(correct_mean, reply_line):
-        if correct_mean >= threshold:
-            is_correct_output = TestAdmissionProcedure.check_keywords(positive_keywords, negative_keywords, reply_line)
-        else:
-            is_correct_output = TestAdmissionProcedure.check_keywords(negative_keywords, positive_keywords, reply_line)
-
-        if not is_correct_output:
-            raise WrongAnswer("The second line of your output seem to contain a wrong message.\n"
-                              "Make sure that you use the correct threshold \n"
-                              "and output the message exactly as stated in the description.")
+        applicants = sorted(applicants, key=lambda x: (-x[1], x[0]))
+        for i in range(m):
+            yield applicants[i][0]
 
     def check(self, reply: str, attach: list):
-        output = reply.lower().strip().split('\n')
+        n, m = int(attach[0]), int(attach[1])
+        applicants = attach[2:]
+        output = reply.strip().split('\n')
         output = [line for line in output if line]
-        if len(output) != 2:
-            raise WrongAnswer("The output should contain 2 lines. \n"
-                              "However, {0} lines were found in your output.".format(len(output)))
-        correct_mean = round(self.get_mean(*attach), 2)
-        try:
-            output_mean = round(float(output[0].strip()), 2)
-        except ValueError:
-            raise WrongAnswer("The first line of your output is supposed to contain nothing but a number.\n")
+        if len(output) != m + 1:
+            raise WrongAnswer("The output should contain {0} lines. \n"
+                              "However, {1} lines were found in your output.".format(m + 1,
+                                                                                     len(output)))
+        if "successful applicants" not in output[0].lower():
+            raise WrongAnswer("The first line of your output should contain the line \"Successful applicants:\"")
 
-        if output_mean != correct_mean:
-            raise WrongAnswer("The mean score in your output is {0}.\n"
-                              "However, the answer {1} was expected.".format(output_mean, correct_mean))
+        applicants = self.get_successful_applicants(applicants, m)
+        for i, applicant in enumerate(applicants, start=1):
+            output_applicant = output[i].strip()
+            if applicant.lower().strip() != output_applicant.lower():
+                raise WrongAnswer("Line {0} of your output is expected to contain the name \"{1}\".\n"
+                                  "However, this line does not seem to satisfy this requirement:\n"
+                                  "{2}".format(i, applicant, output_applicant))
 
-        self.check_result(correct_mean, output[1])
         return CheckResult.correct()
 
 
