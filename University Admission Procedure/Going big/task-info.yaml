@@ -12,8 +12,9 @@ files:
 
     input_1 = ["5", "3", "Cole Collins 3.68", "Dolores Baldwin 3.40", "Brett Boyer 2.45",
                "Nora Alston 3.71", "Jessy Moore 3.14"]
-    input_2 = ["3", "2",
-               "Albert Collins 3.02", "Albert Nelson 3.02", "Cole Allen 3.02"]
+    input_2 = ["5", "3",
+               "Albert Collins 3.02", "Albert Nelson 3.02", "Cole Allen 3.02", "Sameera Procter-Baines 3.18",
+               "Divina Butterworth 3.27"]
     input_3 = ["10", "5",
                "Chuck Norris 3.55", "Artavious Fay 3.05", "Sameera Procter-Baines 3.18",
                "Blia Sagar 3.44", "Divina Butterworth 3.27", "Marygrace Wheelton 3.58",

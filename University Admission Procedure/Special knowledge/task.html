@@ -10,7 +10,8 @@
 	<li>Read an <strong>N </strong>integer. This integer represents the maximum number of students for each department.</li>
 	<li>Read <a target="_blank" href="https://stepik.org/media/attachments/lesson/493610/applicant_list_5.txt" rel="noopener noreferrer nofollow">the file</a> named <em>applicants.txt</em> once again. The structure has changed a bit: instead of the GPA column, each line contains four columns with scores for particular exams: physics, chemistry, math, computer science (in this order). For example, <code class="java">John Ritchie 89 45 83 75 Physics Engineering Mathematics</code>.</li>
 	<li>Take into account the following exam results for the departments: physics for the Physics department, chemistry for the Chemistry department, math for the Mathematics department, computer science for the Engineering, and chemistry (again) for the Biotech department.</li>
-	<li>Do the same steps as in the previous stage. There should be no more than <strong>N</strong> accepted applicants for each department; use the same principles for sorting. One thing has changed — output the exam result (instead of the GPA) for each student:</li>
+	<li>Do the same steps as in the previous stage: perform three stages of admission based on the applicants' priorities. Applicants should be ranked by their exam score and, in case they have the same score, their full name in alphabetic order. There should be no more than <strong>N</strong> accepted applicants for each department. One student can only be accepted to one department. </li>
+	<li>One thing has changed — output the exam result (instead of the GPA) for each student:</li>
 </ol>
 
 <pre><code class="language-no-highlight">department_name
@@ -23,7 +24,7 @@ applicant3 exam3
 
 <p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
 
-<p>Below is an extract of the input file:</p>
+<p>Below is an example of the input file:</p>
 
 <pre><code class="language-no-highlight">Natha Keefe 71 67 53 60 Engineering Biotech Chemistry
 Crescentia Dow 86 94 85 51 Chemistry Physics Mathematics
@@ -49,7 +50,7 @@ Teneil Maclean 85 63 84 45 Mathematics Physics Chemistry
 Shealynn Melville 74 76 88 62 Mathematics Chemistry Physics
 Darrah Smyth 75 73 84 97 Physics Biotech Engineering</code></pre>
 
-<p>This is an extract of the output (only one or two applicants for each department are to be enrolled, but you can change this number):</p>
+<p>This is an example of the output:</p>
 
 <pre><code class="language-no-highlight">&gt; 5
 Biotech

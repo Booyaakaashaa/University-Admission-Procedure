@@ -20,7 +20,7 @@
         onclick="getElementById('hint-2113').style.display='inline'">
         Hint
       </button>
-      <div id="hint-2113" style="display:none;">You may want to create a new list of applicants after each wave of admissions. In this list, you only need to include the applicants that weren't yet accepted to any department. Then, you repeated the procedure of admission using this new, updated list of applicants. </div></p>
+      <div id="hint-2113" style="display:none;">You may want to create a new list of applicants after each wave of admissions. In this list, you only need to include the applicants that weren't yet accepted to any department. Then, you repeat the procedure of admission using this new, updated list of applicants. </div></p>
 
 <p>The number of applicants is increasing, so instead of parsing the data through the manual input, we've created <a target="_blank" href="https://stepik.org/media/attachments/lesson/493610/applicant_list.txt" rel="noopener noreferrer nofollow">the file</a> that contains the list of potential students for your program to read. It is much more convenient to provide your program with information on applicants in this way.</p>
 
@@ -31,7 +31,8 @@
 <ol>
 	<li>Read an <strong>N </strong>integer from the input. This integer represents the maximum number of students for each department.</li>
 	<li>Read <a target="_blank" href="https://stepik.org/media/attachments/lesson/493610/applicant_list.txt" rel="noopener noreferrer nofollow">the file</a> named <em>applicants.txt </em>(this file is already included in the project's files, even though it is not visible; so you only need to download it if you want to take a closer look at it). Each line equals one applicant, their first name, last name, GPA, first priority department, second priority department, and third priority department. Columns with values are separated by whitespace characters. For example, <code class="java">Laura Spungen 3.71 Physics Engineering Mathematics</code>.</li>
-	<li>Sort applicants according to their GPA and priorities (and names, if their GPA score is the same). For each department, choose the <strong>N </strong>best candidates. Some departments are less popular than others, there may be fewer available candidates for a department, however, their number shouldn't be more than <strong>N</strong>.</li>
+	<li>Sort applicants according to their GPA and priorities (and names, if their GPA score is the same). As in the previous stage, if two applicants to the same department have the same GPA, sort them by their full names in alphabetical order. </li>
+	<li>For each department, choose the <strong>N </strong>best candidates. Some departments are less popular than others, so there may be fewer available candidates for a department. However, their number shouldn't be more than <strong>N</strong>.</li>
 	<li>Print the departments in the alphabetic order (Biotech, Chemistry, Engineering, Mathematics, Physics), output the names and the GPA of enrolled applicants for each department. Separate the name and the GPA with a whitespace character. Here's an example (you may add empty lines between the departments' lists to increase the text readability):</li>
 </ol>
 
@@ -40,8 +41,6 @@ applicant1 GPA1
 applicant2 GPA2
 applicant3 GPA3
 &lt;...&gt;</code></pre>
-
-<p>Sort the applicants as in the previous stage (including sorting by name).</p>
 
 <h2>Examples</h2>
 
