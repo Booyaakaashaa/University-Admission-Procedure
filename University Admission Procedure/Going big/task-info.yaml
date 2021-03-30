@@ -72,5 +72,8 @@ files:
         TestAdmissionProcedure().run_tests()
   learner_created: false
 feedback_link: https://hyperskill.org/projects/163/stages/846/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Tue, 30 Mar 2021 18:13:46 UTC
 record: -1
