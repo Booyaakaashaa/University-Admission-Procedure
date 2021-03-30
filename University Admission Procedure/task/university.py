@@ -7,5 +7,5 @@ for _ in range(N):
 
 print("Successful applicants:")
 success_applicants = sorted(applicants, key=lambda x: (-x[1], x[0]))
-for applicant in success_applicants:
+for applicant in success_applicants[:M]:
     print(applicant[0])
