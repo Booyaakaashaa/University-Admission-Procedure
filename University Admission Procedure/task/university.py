@@ -22,8 +22,7 @@ with open("applicants.txt", 'r') as data:
     for applicant in third_priority:
         if len(final_list[applicant[4]]) < N:
             final_list[applicant[4]].append(applicant)
-    final_list = sorted(final_list)
-    for k, _ in final_list:
+    for k in final_list:
         print(k)
         for v in range(N):
-            print(k[0], k[1])
+            print(final_list[k][v][0], final_list[k][v][1])
