@@ -11,14 +11,19 @@ with open("applicants.txt", 'r') as data:
     second_priority = sorted(applicants, key=lambda x: (x[3], -x[1], x[0]))
     third_priority = sorted(applicants, key=lambda x: (x[4], -x[1], x[0]))
     for applicant in first_priority:
-        if len(final_list[applicant[2]]) < 4:
+        if len(final_list[applicant[2]]) < N:
             final_list[applicant[2]].append(applicant)
             second_priority.remove(applicant)
             third_priority.remove(applicant)
     for applicant in second_priority:
-        if len(final_list[applicant[3]]) < 4:
+        if len(final_list[applicant[3]]) < N:
             final_list[applicant[3]].append(applicant)
             second_priority.remove(applicant)
     for applicant in third_priority:
-        if len(final_list[applicant[4]]) < 4:
+        if len(final_list[applicant[4]]) < N:
             final_list[applicant[4]].append(applicant)
+    final_list = sorted(final_list)
+    for k, _ in final_list:
+        print(k)
+        for v in range(N):
+            print(k[0], k[1])
