@@ -210,6 +210,9 @@ files:
     Loura Macansh 3.01 Engineering Physics Mathematics
     Nastassja Trustram 3.77 Mathematics Engineering Physics"""
   learner_created: false
+- name: applicant_list.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/163/stages/847/implement#comment
 status: Unchecked
 record: -1
