@@ -1,12 +1,14 @@
 def choice_num(subject):
     if subject == "Physics":
         return 1
-    if subject == "Chemistry" or subject == "Biotech":
+    if subject == "Chemistry":
         return 2
     if subject == "Mathematics":
         return 3
     if subject == "Engineering":
         return 4
+    if subject == "Biotech":
+        return 5
 
 
 N = int(input())
@@ -15,7 +17,7 @@ final_list = {"Biotech": [], "Chemistry": [], "Engineering": [], "Mathematics": 
 with open("applicants.txt", 'r') as data:
     for line in data:
         first_name, last_name, phy, chem, math, cse, ch1, ch2, ch3 = line.strip().split(" ")
-        applicants.append([first_name + " " + last_name, int(phy), int(chem), int(math), int(cse), ch1, ch2, ch3])
+        applicants.append([first_name + " " + last_name, float(int(phy) / 2 + int(math) / 2), int(chem), int(math), float(int(cse) / 2 + int(math) / 2), float(int(phy) / 2 + int(chem) / 2), ch1, ch2, ch3])
     first_priority = sorted(applicants, key=lambda x: (x[5], -x[choice_num(x[5])], x[0]))
     second_priority = sorted(applicants, key=lambda x: (x[6], -x[choice_num(x[6])], x[0]))
     third_priority = sorted(applicants, key=lambda x: (x[7], -x[choice_num(x[7])], x[0]))
