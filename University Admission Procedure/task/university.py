@@ -32,8 +32,8 @@ with open("applicants.txt", 'r') as data:
         if len(final_list[applicant[7]]) < N:
             final_list[applicant[7]].append(applicant)
     for k in final_list:
-        print(k, len(applicants))
-        final_list[k] = sorted(final_list[k], key=lambda x: (-x[1], x[0]))
+        print(k)
+        final_list[k] = sorted(final_list[k], key=lambda x: (-x[choice_num(k)], x[0]))
         for v in range(len(final_list[k])):
-            print(final_list[k][v][0], final_list[k][v][1])
+            print(final_list[k][v][0], final_list[k][v][choice_num(k)])
         print()
