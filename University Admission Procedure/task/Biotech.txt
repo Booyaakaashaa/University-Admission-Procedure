@@ -1,9 +1,10 @@
-Genee Mccrae 85.5
-Tawnia Alcock 80.5
+Genee Mccrae 94.0
+Tawnia Alcock 91.0
+Narissa Worthington 81.0
+Cynthia Hermitton 80.0
 Randon Bradhust 80.0
-Humphrey Spakeman 76.0
+Marlynn Favell 79.0
 Koury Wingo 76.0
-Marlynn Favell 76.0
 Katrine Proby 74.5
 Artavious Fay 74.0
 Deniz Blanchard 74.0
@@ -12,4 +13,3 @@ Justo Mirfin 74.0
 Maila Greg 74.0
 Mendy Macmillan 71.0
 Savvas Hjellstrom 70.0
-Narissa Worthington 61.5
