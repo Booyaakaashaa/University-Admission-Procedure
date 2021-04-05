@@ -236,5 +236,8 @@ files:
     Nastassja Trustram 60 49 82 68 Mathematics Engineering Physics"""
   learner_created: false
 feedback_link: https://hyperskill.org/projects/163/stages/848/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Mon, 05 Apr 2021 22:35:44 UTC
 record: -1
