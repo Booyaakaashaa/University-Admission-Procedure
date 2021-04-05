@@ -1,12 +1,12 @@
 def choice_num(subject):
     if subject == "Physics":
-        return 0
-    if subject == "Chemistry" or subject == "Biotech":
         return 1
-    if subject == "Mathematics":
+    if subject == "Chemistry" or subject == "Biotech":
         return 2
-    if subject == "Engineering":
+    if subject == "Mathematics":
         return 3
+    if subject == "Engineering":
+        return 4
 
 
 N = int(input())
