@@ -40,8 +40,6 @@ with open("applicants.txt", 'r') as data:
     for k in final_list:
         os.chdir(cwd)
         with open(f"{k}.txt", "w") as out_file:
-            print(k)
             final_list[k] = sorted(final_list[k], key=lambda x: (-x[choice_num(k)], x[0]))
             for v in range(len(final_list[k])):
                 print(final_list[k][v][0], final_list[k][v][choice_num(k)], file=out_file)
-        print()
