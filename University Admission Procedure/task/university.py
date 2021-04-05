@@ -19,23 +19,23 @@ applicants = []
 final_list = {"Biotech": [], "Chemistry": [], "Engineering": [], "Mathematics": [], "Physics": []}
 with open("applicants.txt", 'r') as data:
     for line in data:
-        first_name, last_name, phy, chem, math, cse, ch1, ch2, ch3 = line.strip().split(" ")
-        applicants.append([first_name + " " + last_name, float(int(phy) / 2 + int(math) / 2), int(chem), int(math), float(int(cse) / 2 + int(math) / 2), float(int(phy) / 2 + int(chem) / 2), ch1, ch2, ch3])
-    first_priority = sorted(applicants, key=lambda x: (x[6], -x[choice_num(x[6])], x[0]))
-    second_priority = sorted(applicants, key=lambda x: (x[7], -x[choice_num(x[7])], x[0]))
-    third_priority = sorted(applicants, key=lambda x: (x[8], -x[choice_num(x[8])], x[0]))
+        first_name, last_name, phy, chem, math, cse, score, ch1, ch2, ch3 = line.strip().split(" ")
+        applicants.append([first_name + " " + last_name, float(int(phy) / 2 + int(math) / 2), float(chem), float(math), float(int(cse) / 2 + int(math) / 2), float(int(phy) / 2 + int(chem) / 2), float(score), ch1, ch2, ch3])
+    first_priority = sorted(applicants, key=lambda x: (x[7], -x[6], -x[choice_num(x[7])], x[0]))
+    second_priority = sorted(applicants, key=lambda x: (x[8], -x[6], -x[choice_num(x[8])], x[0]))
+    third_priority = sorted(applicants, key=lambda x: (x[9], -x[6], -x[choice_num(x[9])], x[0]))
     for applicant in first_priority:
-        if len(final_list[applicant[6]]) < N:
-            final_list[applicant[6]].append(applicant)
+        if len(final_list[applicant[7]]) < N:
+            final_list[applicant[7]].append(applicant)
             second_priority.remove(applicant)
             third_priority.remove(applicant)
     for applicant in second_priority:
-        if len(final_list[applicant[7]]) < N:
-            final_list[applicant[7]].append(applicant)
-            third_priority.remove(applicant)
-    for applicant in third_priority:
         if len(final_list[applicant[8]]) < N:
             final_list[applicant[8]].append(applicant)
+            third_priority.remove(applicant)
+    for applicant in third_priority:
+        if len(final_list[applicant[9]]) < N:
+            final_list[applicant[9]].append(applicant)
     cwd = os.getcwd()
     for k in final_list:
         os.chdir(cwd)
