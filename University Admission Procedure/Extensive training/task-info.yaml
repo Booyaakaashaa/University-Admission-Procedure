@@ -241,6 +241,21 @@ files:
     Loura Macansh 71 81 81 93 Engineering Physics Mathematics
     Nastassja Trustram 60 49 82 68 Mathematics Engineering Physics"""
   learner_created: false
+- name: Biotech.txt
+  visible: true
+  learner_created: true
+- name: Mathematics.txt
+  visible: true
+  learner_created: true
+- name: Physics.txt
+  visible: true
+  learner_created: true
+- name: Engineering.txt
+  visible: true
+  learner_created: true
+- name: Chemistry.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/163/stages/849/implement#comment
 status: Unchecked
 record: -1
